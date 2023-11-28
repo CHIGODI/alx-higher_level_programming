@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-z = 'z'
-x = 'a'
+z = ord('z')
+x = ord('a')
 
 while x <= z:
-    print(x, end = "")
-    x = chr(ord(x) + 1)
+    print(chr(x), end = "")
+    x += 1
