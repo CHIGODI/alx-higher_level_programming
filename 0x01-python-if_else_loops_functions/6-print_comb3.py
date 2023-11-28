@@ -2,7 +2,7 @@
 for i in range(10):
     for j in range(i, 10):
         output = "{}{}, ".format(i, j)
-        if output != 99:
+        if output != 89 and i != j:
             print(output, end='')
 
-print("99")
+print("89")
