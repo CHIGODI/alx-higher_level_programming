@@ -3,4 +3,4 @@ alpha = ''
 for i in range(97, 123):
     alpha += '{}'.format(chr(i))
 
-print(alpha, end = "")
+print(alpha, end="")
