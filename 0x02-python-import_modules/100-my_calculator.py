@@ -5,6 +5,7 @@ from calculator_1 import add, sub, mul, div
 argument = sys.argv
 operators = {'+', '-', '*', '/'}
 
+
 def calculator():
     if len(argument) != 4:
         print(f"Usage: ./100-my_calculator.py <a> <operator> <b>")
