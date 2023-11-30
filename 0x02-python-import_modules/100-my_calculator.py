@@ -9,6 +9,7 @@ sub_args = sub(int(argument[1]), int(argument[3]))
 mul_args = mul(int(argument[1]), int(argument[3]))
 div_args = div(int(argument[1]), int(argument[3]))
 
+
 def calculator():
     if len(argument) != 4:
         print(f"Usage: ./100-my_calculator.py <a> <operator> <b>")
@@ -26,5 +27,6 @@ def calculator():
             print(f"Unknown operator. Available operators: +, -, * and /")
             sys.exit(1)
 
+            
 if __name__ == "__main__":
     calculator()
