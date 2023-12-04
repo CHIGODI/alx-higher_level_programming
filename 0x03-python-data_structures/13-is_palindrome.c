@@ -8,20 +8,18 @@
  */
 listint_t *reverse(listint_t **head)
 {
-	listint_t *prev, *curr, *temp;
+	listint_t *prev = NULL, *next = NULL, *current = NULL;
 
-	temp = *head;
-	prev = curr = NULL;
-
-	while (temp != NULL)
+	current = *head;
+	while (current != NULL)
 	{
-		curr = temp;
-		temp = temp->next;
-		curr->next = prev;
-		prev = curr;
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
 	}
-	*head = curr;
-	return (*head);
+
+	return (prev);
 }
 /**
  * is_palindrome - function that checks if a singly linked
@@ -33,24 +31,29 @@ listint_t *reverse(listint_t **head)
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *rev_list, *temp;
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *temp, *rev;
 
-	if (*head == NULL)
-		return (0);
+	if (*head == NULL )
+		return (1);
 
-	rev_list = reverse(head);
-	temp = *head;
-
-	while (temp != NULL && rev_list != NULL)
+	while (fast->next != NULL && fast->next->next != NULL)
 	{
-		if (temp->n != rev_list->n)
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	rev = reverse(&slow->next);
+
+	temp = *head;
+	while(rev != NULL)
+	{
+		if (rev->n != temp->n)
 		{
 			return (0);
 		}
-		else
-		{
-			return (1);
-		}
+		rev = rev->next;
+		temp = temp->next;
 	}
-	return (0);
+	return (1);
 }
