@@ -15,9 +15,13 @@ def roman_to_int(roman_string):
         'M': 1000
         }
     int_num = 0
+    prev_ch = ""
 
     for ch in roman_string:
-        for key, value in my_dict.items():
-            if ch == key:
-                int_num += value
+        if ch in my_dict:
+            if prev_ch and my_dict[ch] > my_dict[prev_ch]:
+                int_num += my_dict[ch] - my_dict[prev_ch] * 2
+            else:
+                int_num += my_dict[ch]
+        prev_ch = ch
     return int_num
