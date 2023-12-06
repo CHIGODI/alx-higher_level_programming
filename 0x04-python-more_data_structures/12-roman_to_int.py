@@ -2,6 +2,9 @@
 
 
 def roman_to_int(roman_string):
+    if not roman_string or len(roman_string) == 0:
+        return None
+
     my_dict = {
         'I': 1,
         'V': 5,
@@ -13,10 +16,9 @@ def roman_to_int(roman_string):
         }
     int_num = 0
 
-    if not roman_string or roman_string == None or len(roman_string) == 0:
-        return None
-
     for ch in roman_string:
-        if ch in my_dict:
-            int_num += my_dict[ch]
+        for key, value in my_dict.items():
+            if ch == value:
+                int_num += value
+
     return int_num
