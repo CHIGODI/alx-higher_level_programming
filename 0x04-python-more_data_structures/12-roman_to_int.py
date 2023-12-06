@@ -18,7 +18,6 @@ def roman_to_int(roman_string):
 
     for ch in roman_string:
         for key, value in my_dict.items():
-            if ch == value:
+            if ch == key:
                 int_num += value
-
     return int_num
