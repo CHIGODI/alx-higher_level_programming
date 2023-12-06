@@ -2,7 +2,7 @@
 
 
 def roman_to_int(roman_string):
-    if type(roman_string)is not str or roman_string is None:
+    if type(roman_string) is not str or roman_string is None:
         return None
 
     my_dict = {
