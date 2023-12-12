@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 
+
 def print_arguments():
     x = 1
     count = -1
@@ -19,6 +20,7 @@ def print_arguments():
         while x != len(argmts):
             print("{}: {}".format(x, argmts[x]))
             x += 1
+
 
 if __name__ == "__main__":
     print_arguments()
