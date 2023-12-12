@@ -13,7 +13,7 @@ def print_arguments():
     if count == 0:
         print("0 arguments.")
     elif len(argmts) == 2:
-        print("1 argument: ")
+        print("1 argument:")
         print("1: {}".format(argmts[1]))
     elif len(argmts) > 2:
         print("{} arguments:".format(count))
