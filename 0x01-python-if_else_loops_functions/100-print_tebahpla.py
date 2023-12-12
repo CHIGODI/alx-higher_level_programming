@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-for alpha in range(122, 96, -1):
+for alpha in range(26, 0, -1):
     if (alpha % 2 == 0):
-        print("{}".format(chr(alpha)), end="")
+        print("{:c}".format(96 + alpha), end="")
     else:
-        print("{}".format(chr(alpha - 32)), end="")
+        print("{:c}".format(64 + alpha), end="")
