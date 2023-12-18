@@ -1,13 +1,12 @@
 #!/usr/bin/python3
-
-
 def safe_print_list_integers(my_list=[], x=0):
-    count = 0;
-    while count < x:
-        print("{:d}".format(mylist[count]))
-        count += 1
-    except Exception:
-        continue
+    int_count = 0
 
+    for item in range(x):
+        try:
+            print("{:d}".format(my_list[item]), end="")
+            int_count += 1
+        except (TypeError, ValueError):
+            continue
     print()
-    return (count)
+    return (int_count)
