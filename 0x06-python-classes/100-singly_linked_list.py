@@ -29,8 +29,10 @@ class Node:
             raise TypeError("next_node must be a Node object or None")
         self.__next_node = value
 
+""" Defines a singlyLinked List class """
 
 class SinglyLinkedList:
+    """attributes of the linked list """
     def __init__(self):
         self.__head = None
 
