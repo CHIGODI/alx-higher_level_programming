@@ -1,0 +1,34 @@
+>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+#Normal case
+>>> matrix_divided([[12,6,24], [12,6,24]], 3)
+[[4.0, 2.0, 8.0], [4.0, 2.0, 8.0]]
+
+#float numbers
+>>> matrix_divided([[12.12,6.6,24.24], [12.12,6.6,24.24]], 3)
+[[4.04, 2.2, 8.08], [4.04, 2.2, 8.08]]
+
+#when div is string
+>>> matrix_divided([[12,6,24], [12,6,24]], 'str')
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+#when matrix rows have diff lengths
+>>> matrix_divided([[12,6,24], [12,6]], 3)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+#when items in lists is not int or float
+>>> matrix_divided([['str',2,4,8], [3,4,12,6]], 3)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+#when div is zero
+>>> matrix_divided([[3,2,4,8], [3,4,12,6]], 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
