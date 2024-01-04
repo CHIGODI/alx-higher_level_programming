@@ -50,6 +50,7 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+        Rectangle.number_of_instances += 1
 
     def area(self):
         """ returning area of rectangle """
