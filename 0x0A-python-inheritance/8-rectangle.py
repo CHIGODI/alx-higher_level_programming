@@ -8,8 +8,6 @@ A rectangle child class of basegeometry
 class Rectangle(BaseGeometry):
     """
     Attributes of rectangle
-    width;
-    height;
     """
     def __init__(self, width, height):
         """
