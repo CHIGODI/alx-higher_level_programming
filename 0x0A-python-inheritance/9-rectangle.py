@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
-
+"""
+  This module defines the Rectangle class that represents a
+  rectangle object.
+  It inherits functionality from the BaseGeometry class to
+  handle geometry-related operations.
+"""
 class Rectangle(BaseGeometry):
     """
     Represents a rectangle object inheriting from the BaseGeometry class.
