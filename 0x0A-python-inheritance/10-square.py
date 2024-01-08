@@ -18,10 +18,3 @@ class Square(Rectangle):
         Initializes a Square instance.
         """
         super().__init__(size, size)
-        self.__size = size
-
-    def area(self):
-        """
-        returns area of a rectangle
-        """
-        return self.__size * self.__size
