@@ -5,6 +5,9 @@ class MyInt that inherits from int
 
 
 class MyInt(int):
+    """
+    defines my customised int class inheriting form int
+    """
     def __eq__(self, other):
         """
         __eq__ is the equal method here iam swaping it with other
