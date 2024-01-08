@@ -8,10 +8,12 @@ A rectangle child class of basegeometry
 class Rectangle(BaseGeometry):
     """
     Attributes of rectangle
+    width: width or rectangle
+    heigh: height or rectangle
     """
     def __init__(self, width, height):
         """
-        attributes of rectangle class
+        object constructor
         """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
