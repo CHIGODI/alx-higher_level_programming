@@ -22,9 +22,9 @@ class Student:
         """
         class to json
         """
-        if attrs == None:
+        if attrs is None:
             return self.__dict__
         else:
             store = self.__dict__
-            result = {key : store[key] for key in attrs if key in store}
+            result = {key: store[key] for key in attrs if key in store}
             return result
