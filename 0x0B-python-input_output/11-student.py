@@ -34,4 +34,4 @@ class Student:
         replaces all attributes of the Student instance:
         """
         self.__dict__ = json
-        return self
+        return self.__dict__
