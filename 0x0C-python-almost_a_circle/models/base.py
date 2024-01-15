@@ -44,21 +44,21 @@ class Base:
         method.
         """
         with open("Rectangle.json", mode="w", encoding="utf-8") as f:
+            l1 = []
             if list_objs is None:
                 f.write("[]")
             else:
-                l1 = []
                 for item in list_objs:
                     l1.append(item.to_dictionary())
             json.dump(l1, f)
 
-    @classmethod
+    @staticmethod
     def from_json_string(json_string):
         """
         Converts a JSON-formatted string to a list of dictionaries.
         Returns an empty list if the input string is None.
         """
-        if json_string is None:
+        if not json_string:
             return []
         else:
             return json.loads(json_string)
@@ -70,9 +70,16 @@ class Base:
         The dictionary is expected to contain the necessary attributes
         for object creation.
         """
-        dummy_class = cls(2, 2)
-        dummy_class.update(**dictionary)
-        return dummy_class
+
+        if cls.__name__ == "Rectangle":
+            dummy_instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy_instance = cls(1)
+        else:
+            return None
+
+        dummy_instance.update(**dictionary)
+        return dummy_instance
 
     @classmethod
     def load_from_file(cls):
@@ -80,10 +87,12 @@ class Base:
         Loads objects from a file and returns a list of instances.
         """
         # try to open file if it exists
+        filename = cls.__name__ + ".json"
         try:
-            with open("Rectangle.json", mode="r", encoding="utf-8") as f:
-                json_list_dicts = f.read()
+            with open(filename, mode='r', encoding='utf-8') as f:
+                content = f.read()
+                list_dicts = cls.from_json_string(content)
+                instances = [cls.create(**d) for d in list_dicts]
+                return instances
         except FileNotFoundError:
             return []
-        list_dicts = cls.from_json_string(json_list_dicts)
-        return [cls.create(cls, **item) for item in list_dicts]

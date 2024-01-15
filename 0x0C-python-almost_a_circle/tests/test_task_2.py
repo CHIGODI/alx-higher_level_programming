@@ -12,7 +12,21 @@ class TestRectangle(unittest.TestCase):
     """
     Test if the 'id' attribute is assigned correctly
     """
-    def test_ractangle(self):
+    def setUp(self):
+        """
+        Reset the __nb_objects attribute to its initial value before each
+        test method
+        """
+        Base._Base__nb_objects = 0
+
+    def tearDown(self):
+        """
+        Reset the __nb_objects attribute to its initial value
+        """
+        Rectangle._Base__nb_objects = 0
+
+    def test_rectangle(self):
+        Base._Base__nb_objects = 0
         r1 = Rectangle(10, 2)
         r2 = Rectangle(2, 10)
         r3 = Rectangle(10, 2, 0, 0, 12)

@@ -43,20 +43,12 @@ class Square(Rectangle):
         Updates attributes of rectangle on how they are passed
         """
         if args:
-            self.id = args[0] if len(args) > 0 else self.id
-            self.size = args[1] if len(args) > 1 else self.size
-            self.x = args[3] if len(args) > 3 else self.x
-            self.y = args[4] if len(args) > 4 else self.y
+            attr = ['id', 'size', 'x', 'y']
+            for key, val in zip(attr, args):
+                setattr(self, key, val)
         else:
             for key, value in kwargs.items():
-                if key == 'id':
-                    self.id = value
-                if key == 'size':
-                    self.size = value
-                if key == 'x':
-                    self.x = value
-                if key == 'y':
-                    self.y =value
+                setattr(self, key, value)
 
     def to_dictionary(self):
         """

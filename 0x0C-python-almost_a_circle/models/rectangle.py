@@ -21,6 +21,23 @@ class Rectangle(Base):
         Initializes a Rectangle instance.
         """
         super().__init__(id)
+        if type(width) is not int:
+            raise TypeError("width must be an integer")
+        if width <= 0:
+            raise ValueError("width must be > 0")
+        if type(height) is not int:
+            raise TypeError("height must be an integer")
+        if height <= 0:
+            raise ValueError("height must be > 0")
+        if type(x) is not int:
+            raise TypeError("x must be an integer")
+        if x < 0:
+            raise ValueError("x must be >= 0")
+        if type(y) is not int:
+            raise TypeError("y must be an integer")
+        if y < 0:
+            raise ValueError("y must be >= 0")
+
         self.__width = width
         self.__height = height
         self.__x = x
@@ -95,7 +112,7 @@ class Rectangle(Base):
         if type(value) is not int:
             raise TypeError("y must be an integer")
         if value < 0:
-            raise ValueError("y must be > 0")
+            raise ValueError("y must be >= 0")
         self.__y = value
 
     def area(self):
@@ -110,7 +127,7 @@ class Rectangle(Base):
         """
         print('\n' * self.__y, end='')
         for _ in range(self.__height):
-            print(' ' * self.__x, '#' * self.__width)
+            print(' ' * self.__x + '#' * self.__width)
 
     def __str__(self):
         """
@@ -124,23 +141,12 @@ class Rectangle(Base):
         Updates attributes of rectangle on how they are passed
         """
         if args:
-            self.id = args[0] if len(args) > 0 else self.id
-            self.__width = args[1] if len(args) > 1 else self.__width
-            self.__height = args[2] if len(args) > 2 else self.__height
-            self.__x = args[3] if len(args) > 3 else self.__x
-            self.__y = args[4] if len(args) > 4 else self.__y
+            attr = ['id', 'width', 'height', 'x', 'y']
+            for key, val in zip(attr, args):
+                setattr(self, key, val)
         else:
             for key, value in kwargs.items():
-                if key == 'id':
-                    self.id = value
-                if key == 'width':
-                    self.__width = value
-                if key == 'height':
-                    self.__height = value
-                if key == 'x':
-                    self.__x = value
-                if key == 'y':
-                    self.__y = value
+                setattr(self, key, value)
 
     def to_dictionary(self):
         """

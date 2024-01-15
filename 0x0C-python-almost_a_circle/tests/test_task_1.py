@@ -10,6 +10,12 @@ class TestClassAttr(unittest.TestCase):
     """
     Test cases for Base class attributes
     """
+    def tearDown(self):
+        """
+        Reset the __nb_objects attribute to its initial value
+        after each test method
+        """
+        Base._Base__nb_objects = 0
 
     def test_class_init(self):
         """
