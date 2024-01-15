@@ -3,6 +3,7 @@
 This is a Base Class
 """
 
+import csv
 import json
 
 
@@ -92,7 +93,46 @@ class Base:
         try:
             with open(filename, mode='r', encoding='utf-8') as f:
                 content = f.read()
+                list_dicts = cls.from_json_string(content)
+                return [cls.create(**d) for d in list_dicts]
         except FileNotFoundError:
             return []
-        list_dicts = cls.from_json_string(content)
-        return [cls.create(**d) for d in list_dicts]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        serializes list_objs to a file
+        """
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Serializes list_objs to a file in CSV format.
+        """
+        filename = cls.__name__ + '.csv'
+        l1 = []
+        with open(filename, mode='w', encoding='utf-8') as f:
+            fieldnames = list(list_objs[0].to_dictionary().keys())
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+
+            # Write header
+            writer.writeheader()
+
+            # Write data
+            for item in list_objs:
+                l1.append(item.to_dictionary())
+                writer.writerow(item.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        derializes list_objs from a file
+        """
+        filename = cls.__name__ + '.csv'
+        try:
+            with open(filename, mode='r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                int_dict = [{key: int(value) for key, value in item.items()}
+                            for item in reader]
+                return [cls.create(**instance) for instance in int_dict]
+        except FileNotFoundError:
+            return []
