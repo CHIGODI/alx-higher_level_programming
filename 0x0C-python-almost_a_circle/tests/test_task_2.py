@@ -26,6 +26,9 @@ class TestRectangle(unittest.TestCase):
         Rectangle._Base__nb_objects = 0
 
     def test_rectangle(self):
+        """
+        test Id of the rectangle class
+        """
         Base._Base__nb_objects = 0
         r1 = Rectangle(10, 2)
         r2 = Rectangle(2, 10)

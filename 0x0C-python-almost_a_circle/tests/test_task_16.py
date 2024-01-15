@@ -14,8 +14,8 @@ class TestBaseSaveToFile(unittest.TestCase):
 
     def test_save_to_file_empty(self):
         Base.save_to_file(None)
-        self.assertTrue(os.path.exists("Rectangle.json"))
-        filename = 'Rectangle.json'
+        self.assertTrue(os.path.exists("Base.json"))
+        filename = 'Base.json'
         with open(filename, mode='r', encoding='utf-8') as f:
             result = f.read()
 

@@ -43,13 +43,14 @@ class Base:
         Converts each object to a dictionary using the 'to_dictionary'
         method.
         """
-        with open("Rectangle.json", mode="w", encoding="utf-8") as f:
+        filename = cls.__name__ + '.json'
+        with open(filename, mode="w", encoding="utf-8") as f:
             l1 = []
             if list_objs is None:
                 f.write("[]")
             else:
-                for item in list_objs:
-                    l1.append(item.to_dictionary())
+                for list_item in list_objs:
+                    l1.append(list_item.to_dictionary())
             json.dump(l1, f)
 
     @staticmethod
@@ -91,8 +92,7 @@ class Base:
         try:
             with open(filename, mode='r', encoding='utf-8') as f:
                 content = f.read()
-                list_dicts = cls.from_json_string(content)
-                instances = [cls.create(**d) for d in list_dicts]
-                return instances
         except FileNotFoundError:
             return []
+        list_dicts = cls.from_json_string(content)
+        return [cls.create(**d) for d in list_dicts]
