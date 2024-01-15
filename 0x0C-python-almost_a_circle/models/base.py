@@ -139,16 +139,31 @@ class Base:
             return []
 
     @staticmethod
-    def draw(list_rectangles):
+    def draw(list_rectangles, list_squares):
         """
         Draw shape
         """
+        rect = turtle.Turtle()
         for obj in list_rectangles:
-            rect = turtle.Turtle()
-            rect.forwar(obj.width)
-            rect.left(90)
-            rect.forward(obj.height)
-            rect.left(90)
-            rect.forward(obj.width)
-            rect.left(90)
-            rect.forward(obj.height)
+            for _ in range(2):
+                rect.forwar(obj.width)
+                rect.left(90)
+                rect.forward(obj.height)
+                rect.left(90)
+
+            rect.penup()
+            rect.forward(20)
+
+        rect.penup()
+            rect.forward(20)
+
+        sqr = turtle.Turtle()
+        for obj in list_squares:
+            for _ in range(2):
+                sqr.forwar(obj.size)
+                sqr.left(90)
+                sqr.forward(obj.size)
+                sqr.left(90)
+            sqr.penup()
+            sqr.forward(20)
+        turtle.done()
