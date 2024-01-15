@@ -5,6 +5,7 @@ This is a Base Class
 
 import csv
 import json
+import turtle
 
 
 class Base:
@@ -136,3 +137,18 @@ class Base:
                 return [cls.create(**instance) for instance in int_dict]
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles):
+        """
+        Draw shape
+        """
+        for obj in list_rectangles:
+            rect = turtle.Turtle()
+            rect.forwar(obj.width)
+            rect.left(90)
+            rect.forward(obj.height)
+            rect.left(90)
+            rect.forward(obj.width)
+            rect.left(90)
+            rect.forward(obj.height)
