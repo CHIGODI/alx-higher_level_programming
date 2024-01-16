@@ -26,6 +26,18 @@ class TestArea(unittest.TestCase):
         r1 = Rectangle(3, 2)
         r2 = Rectangle(10, 2, 0, 0, 12)
 
+        with self.assertRaises(ValueError):
+            r3 = Rectangle(-1, 2)
+
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(1, -2)
+
+        with self.assertRaises(TypeError):
+            r4 = Rectangle("1", 2)
+
+        with self.assertRaises(TypeError):
+            r6 = Rectangle(1, "2")
+
         self.assertEqual(r1.area(), 6)
         self.assertEqual(r2.area(), 20)
 
