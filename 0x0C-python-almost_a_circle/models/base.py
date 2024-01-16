@@ -102,11 +102,6 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """
-        serializes list_objs to a file
-        """
-    @classmethod
-    def save_to_file_csv(cls, list_objs):
-        """
         Serializes list_objs to a file in CSV format.
         """
         filename = cls.__name__ + '.csv'
@@ -154,7 +149,7 @@ class Base:
             rect.penup()
             rect.forward(20)
 
-        rect.penup()
+            rect.penup()
             rect.forward(20)
 
         sqr = turtle.Turtle()
@@ -164,6 +159,7 @@ class Base:
                 sqr.left(90)
                 sqr.forward(obj.size)
                 sqr.left(90)
+
             sqr.penup()
             sqr.forward(20)
         turtle.done()
