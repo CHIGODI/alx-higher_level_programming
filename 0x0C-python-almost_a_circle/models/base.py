@@ -47,13 +47,15 @@ class Base:
         """
         filename = cls.__name__ + '.json'
         with open(filename, mode="w", encoding="utf-8") as f:
-            l1 = []
+            temp_list = []
             if list_objs is None:
                 f.write("[]")
             else:
+                # convert each list_objs to dictionary and store in temp_list
                 for list_item in list_objs:
-                    l1.append(list_item.to_dictionary())
-            json.dump(l1, f)
+                    temp_list.append(list_item.to_dictionary())
+                json_list = cls.to_json_string(temp_list)
+                f.write(json_list)
 
     @staticmethod
     def from_json_string(json_string):

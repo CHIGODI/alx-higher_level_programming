@@ -19,7 +19,7 @@ class TestBaseSaveToFile(unittest.TestCase):
         with open(filename, mode='r', encoding='utf-8') as f:
             result = f.read()
 
-        self.assertEqual(result, '[][]')
+        self.assertEqual(result, '[]')
 
     def test_save_to_file(self):
         r1 = Rectangle(10, 7, 2, 8)
