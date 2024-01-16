@@ -25,13 +25,22 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle(10, 2)
 
         with self.assertRaises(TypeError):
+            r12 = Rectangle(2.2, 10)
+
+        with self.assertRaises(TypeError):
             r2 = Rectangle(2, 10.3)
 
         with self.assertRaises(ValueError):
             r3 = Rectangle(0, 10)
 
+        with self.assertRaises(ValueError):
+            r13 = Rectangle(10, 0)
+
         with self.assertRaises(TypeError):
-            r4 = Rectangle("str", "str")
+            r4 = Rectangle("1", 2)
+
+        with self.assertRaises(TypeError):
+            r8 = Rectangle(1, "2")
 
         with self.assertRaises(ValueError):
             r5 = Rectangle(-2, -10)
@@ -39,7 +48,16 @@ class TestRectangle(unittest.TestCase):
         r6 = Rectangle(2, 10, 0, 0, 12)
 
         with self.assertRaises(ValueError):
-            r7 = Rectangle(2, 10, -1, -1, 12)
+            r7 = Rectangle(2, 10, -1, 1, 12)
+
+        with self.assertRaises(ValueError):
+            r11 = Rectangle(2, 10, 1, -1, 12)
+
+        with self.assertRaises(TypeError):
+            r9 = Rectangle(2, 10, 1, "1", 12)
+
+        with self.assertRaises(TypeError):
+            r10 = Rectangle(2, 10, 1, "1", 12)
 
 
 if __name__ == '__main__':
