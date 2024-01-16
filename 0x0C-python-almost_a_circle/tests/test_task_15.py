@@ -15,6 +15,18 @@ class TestBaseToJsonString(unittest.TestCase):
         result = Base.to_json_string([])
         self.assertEqual(result, "[]")
 
+    def test_to_json_string_string_list(self):
+        """
+        """
+        result = Base.to_json_string('[]')
+        self.assertEqual(result, '"[]"')
+
+    def test_to_json_string_with_json__string_list(self):
+        """
+        """
+        result = Base.to_json_string('[{"id": 3}]')
+        self.assertEqual(result, '"[{\\"id\\": 3}]"')
+
     def test_to_json_string_none(self):
         """
         """
