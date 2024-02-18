@@ -1,5 +1,7 @@
--- lists records of score >= 10 and name
+-- displays the average temperature (Fahrenheit)
+-- by city ordered by temperature (descending)
 
-SELECT score, name form second_table
-WHERE score >= 10
-ORDER BY score DESC;
+SELECT city, AVG(value) as avg_temp
+FROM temperatures
+GROUP BY city
+ORDER BY avg_temp;
