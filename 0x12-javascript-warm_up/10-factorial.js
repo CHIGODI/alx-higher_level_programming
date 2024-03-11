@@ -2,13 +2,17 @@
 
 const { argv } = require('node:process');
 const number = Number(argv[2]);
-let factorial = 1;
 
-if (number && !isNaN(number)) {
-  for (let i = 1; i <= number; i++) {
-    factorial *= i;
+function calculateFactorial (num) {
+  if (num === 0 || num === 1) {
+    return 1;
   }
-  console.log(factorial);
+  return num * calculateFactorial(num - 1);
+}
+
+if (!isNaN(number)) {
+  const result = calculateFactorial(number);
+  console.log(result);
 } else {
   console.log(1);
 }
