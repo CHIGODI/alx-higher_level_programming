@@ -3,9 +3,8 @@
 const { argv } = require('node:process');
 const size = parseInt(argv[2]);
 
-
 if (isNaN(size) || !size) {
-  console.log('Missing number of occurrences');
+  console.log('Missing size');
 } else {
   for (let i = 0; i < size; i++) {
     let square = '';
