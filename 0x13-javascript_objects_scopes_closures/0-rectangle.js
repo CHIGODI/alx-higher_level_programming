@@ -3,4 +3,4 @@
 class Rectangle {
 // Empty class
 }
-exports.Rectangle = Rectangle;
+module.exports = Rectangle;
