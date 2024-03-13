@@ -2,15 +2,15 @@
 
 const { dict } = require('./101-data');
 
-let newDict = {};
+const newDict = {};
 for (const key in dict) {
-    if (dict.hasOwnProperty(key)) {
-        let value = dict[key];
-        if (!newDict[value]) {
-            newDict[value] = [];
-        }
-        newDict[value].push(key);
+  if (dict.hasOwnProperty(key)) {
+    const value = dict[key];
+    if (!newDict[value]) {
+      newDict[value] = [];
     }
+    newDict[value].push(key);
+  }
 }
 
 console.log(newDict);
