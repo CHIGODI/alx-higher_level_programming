@@ -6,6 +6,7 @@ accepts command line args:
                           -MySQl username
                           -MySQL user passwd
                           -Database name
+                          -State name to be searched
 """
 import MySQLdb
 import sys
@@ -20,9 +21,9 @@ conn = MySQLdb.connect(host='localhost', port=3306, user=mysql_username,
                        passwd=mysql_passwd, db=database_name)
 cur = conn.cursor()
 
-sql_query = 'SELECT * FROM states WHERE name = %s ORDER BY id ASC'
+sql_query = 'SELECT * FROM states WHERE name = \'' + state_name_searched + '\' ORDER BY id ASC'
 
-cur.execute(sql_query, (state_name_searched,))
+cur.execute(sql_query)
 query_row = cur.fetchall()
 
 for row in query_row:
