@@ -26,3 +26,6 @@ for row in query_columns:
 
 cur.close()
 conn.close()
+
+if __name__ == '__main__':
+    pass
