@@ -18,11 +18,16 @@ if __name__ == '__main__':
     mysql_passwd = argv[2]
     database_name = argv[3]
 
-    conn = MySQLdb.connect(host='localhost', port=3306, user=mysql_username,
-                           passwd=mysql_passwd, db=database_name, charset="utf8")
+    conn = MySQLdb.connect(host='localhost',
+                           port=3306,
+                           user=mysql_username,
+                           passwd=mysql_passwd,
+                           db=database_name,
+                           charset="utf8"
+                           )
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM states WHERE states.name LIKE 'N%' ORDER BY states.id ASC")
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
     query_columns = cur.fetchall()
 
     for row in query_columns:
