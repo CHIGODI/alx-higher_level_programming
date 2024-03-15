@@ -26,9 +26,10 @@ def main():
     cur = conn.cursor()
     sql_query = ("SELECT * FROM states "
                  "WHERE states.name = '{}' "
-                 "ORDER BY states.id ASC"
+                 "ORDER BY states.id ASC;"
                  .format(state_name_searched)
                  )
+    print(sql_query)
     cur.execute(sql_query)
     query_row = cur.fetchall()
 
