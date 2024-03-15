@@ -8,29 +8,34 @@ accepts command line args:
                           -Database name
                           -State name to be searched
 """
-import MySQLdb
-import sys
 
-argv = sys.argv
-mysql_username = argv[1]
-mysql_passwd = argv[2]
-database_name = argv[3]
-state_name_searched = argv[4]
-
-conn = MySQLdb.connect(host='localhost', port=3306, user=mysql_username,
-                       passwd=mysql_passwd, db=database_name)
-cur = conn.cursor()
-
-sql_query = 'SELECT * FROM states WHERE name = %s ORDER BY id ASC'
-
-cur.execute(sql_query, (state_name_searched,))
-query_row = cur.fetchall()
-
-for row in query_row:
-    print(row)
-
-cur.close()
-conn.close()
 
 if __name__ == '__main__':
-    pass
+    import MySQLdb
+    import sys
+
+    argv = sys.argv
+    mysql_username = argv[1]
+    mysql_passwd = argv[2]
+    database_name = argv[3]
+    state_name_searched = argv[4]
+
+    conn = MySQLdb.connect(
+                            host='localhost',
+                            port=3306,
+                            user=mysql_username,
+                            passwd=mysql_passwd,
+                            db=database_name
+                           )
+    cur = conn.cursor()
+
+    sql_query = ('SELECT * FROM states WHERE name = %s ORDER BY id ASC')
+
+    cur.execute(sql_query, (state_name_searched,))
+    query_row = cur.fetchall()
+
+    for row in query_row:
+        print(row)
+
+    cur.close()
+    conn.close()
