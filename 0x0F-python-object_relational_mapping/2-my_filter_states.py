@@ -25,7 +25,7 @@ def main():
                            passwd=mysql_passwd, db=database_name)
     cur = conn.cursor()
     sql_query = ("SELECT * FROM states "
-                 "WHERE states.name = '{}' "
+                 "WHERE states.name = BINARY '{}' "
                  "ORDER BY states.id ASC;"
                  .format(state_name_searched)
                  )
