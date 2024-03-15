@@ -8,7 +8,7 @@ accepts command line args:
 """
 
 
-if __name__ == '__main__':
+def main():
     import MySQLdb
     import sys
 
@@ -30,16 +30,23 @@ if __name__ == '__main__':
                  'LEFT JOIN states '
                  'ON states.id = cities.state_id '
                  'WHERE states.name = %s '
-                 'ORDER BY cities.id ASC')
+                 'ORDER BY cities.id ASC;')
     cur.execute(sql_query, (state_name,))
-    query_rows = cur.fetchall()
+    query_row = cur.fetchall()
 
-    for index, row in enumerate(query_rows):
-        for city in row:
-            if index < len(query_rows) - 1:
-                print(city, end=', ')
-            else:
-                print(city)
+    if query_row:
+        for index, row in enumerate(query_row):
+            for city in row:
+                if index < len(query_row) - 1:
+                    print(city, end=', ')
+                else:
+                    print(city)
+    else:
+        print()
 
     cur.close()
     conn.close()
+
+
+if __name__ == '__main__':
+    main()
