@@ -13,23 +13,22 @@ import MySQLdb
 import sys
 
 
-if __name__ == '__main__':
+def main():
     argv = sys.argv
     mysql_username = argv[1]
     mysql_passwd = argv[2]
     database_name = argv[3]
     state_name_searched = argv[4]
 
+    # creating a connection to mysql db
     conn = MySQLdb.connect(host='localhost', port=3306, user=mysql_username,
                            passwd=mysql_passwd, db=database_name)
     cur = conn.cursor()
-
     sql_query = ("SELECT * FROM states "
                  "WHERE states.name = '{}' "
                  "ORDER BY states.id ASC"
                  .format(state_name_searched)
                  )
-
     cur.execute(sql_query)
     query_row = cur.fetchall()
 
@@ -38,3 +37,7 @@ if __name__ == '__main__':
 
     cur.close()
     conn.close()
+
+
+if __name__ == '__main__':
+    main()
