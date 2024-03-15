@@ -9,11 +9,11 @@ accepts command line args:
                           -State name to be searched
 """
 
+import MySQLdb
+import sys
+
 
 if __name__ == '__main__':
-    import MySQLdb
-    import sys
-
     argv = sys.argv
     mysql_username = argv[1]
     mysql_passwd = argv[2]
@@ -24,11 +24,10 @@ if __name__ == '__main__':
                            passwd=mysql_passwd, db=database_name)
     cur = conn.cursor()
 
-    sql_query = (
-                    "SELECT * FROM states WHERE name = '" +
-                    state_name_searched +
-                    "' ORDER BY id ASC"
-                )
+    sql_query = ("SELECT * FROM states "
+                 "WHERE states.name = '{}'"
+                 .format(state_name_searched)
+                 )
 
     cur.execute(sql_query)
     query_row = cur.fetchall()
