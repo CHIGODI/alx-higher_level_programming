@@ -29,7 +29,6 @@ def main():
                  "ORDER BY states.id ASC;"
                  .format(state_name_searched)
                  )
-    print(sql_query)
     cur.execute(sql_query)
     query_row = cur.fetchall()
 
