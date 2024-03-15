@@ -20,7 +20,7 @@ if __name__ == '__main__':
                            passwd=mysql_passwd, db=database_name)
     cur = conn.cursor()
 
-    cur.execute('SELECT * FROM  states ORDER BY id')
+    cur.execute('SELECT * FROM  states ORDER BY states.id')
     query_columns = cur.fetchall()
 
     for row in query_columns:
