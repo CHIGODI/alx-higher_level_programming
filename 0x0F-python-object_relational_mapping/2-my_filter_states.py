@@ -25,15 +25,14 @@ if __name__ == '__main__':
     cur = conn.cursor()
 
     sql_query = ("SELECT * FROM states "
-                 "WHERE states.name = '{}'"
-                 "ORDER BY states.id"
+                 "WHERE states.name = '{}' "
+                 "ORDER BY states.id ASC"
                  .format(state_name_searched)
                  )
 
     cur.execute(sql_query)
     query_row = cur.fetchall()
 
-    print(query_row)
     for row in query_row:
         print(row)
 
