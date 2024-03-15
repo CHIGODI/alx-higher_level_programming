@@ -22,7 +22,7 @@ if __name__ == '__main__':
     session = Session()
 
     state_id = session.query(
-        State.id).filter(State.name == sys.argv[4]).first()
+        State.id).filter(State.name.like('(?i)[sys.argv[4]]')).first()
 
     if state_id:
         print(state_id[0])
