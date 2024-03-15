@@ -18,14 +18,13 @@ if __name__ == '__main__':
     # mysql://root:3778@localhost:3306/hbtn_0e_6_usa
 
     Session = sessionmaker(bind=engine)
-
     session = Session()
-
     state_id = session.query(
-        State.id).filter(State.name.like('(?i)[sys.argv[4]]')).first()
+        State.id).filter(State.name.collate(
+            'utf8mb4_bin') == sys.argv[4]).first()
 
     if state_id:
-        print(state_id[0])
+        print(state_id.id)
     else:
         print('Not found')
 
