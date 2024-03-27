@@ -1,6 +1,3 @@
 #!/bin/bash
 # use flag -X to specify http method
-
-url="$1"
-
-curl -sX DELETE "$url"
+curl -sX DELETE "$1"
