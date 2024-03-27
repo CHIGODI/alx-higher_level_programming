@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #follow redirects with curl -L
 
 url="$1"

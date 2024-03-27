@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # displays the size of the body of GET response
 
 URL="$1"

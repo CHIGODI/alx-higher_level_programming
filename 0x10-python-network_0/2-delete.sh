@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # use flag -X to specify http method
 
 url="$1"
