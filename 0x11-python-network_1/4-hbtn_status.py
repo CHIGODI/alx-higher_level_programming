@@ -12,5 +12,5 @@ if __name__ == '__main__':
     print(
         f'Body response:\n'
         f'\t- type: {type(response.text)}\n'
-        f'\t- Content: {response.text}'
+        f'\t- content: {response.text}'
           )
