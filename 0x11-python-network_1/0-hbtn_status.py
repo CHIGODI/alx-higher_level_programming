@@ -16,7 +16,7 @@ def main():
         print(f'Body response:\n\t'
               f'- type: {type(response)}\n\t'
               f'- content: {response}\n\t'
-              f'- utf content: {utf_content}'
+              f'- utf8 content: {utf_content}'
               )
 
 
