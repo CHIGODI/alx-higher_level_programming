@@ -11,9 +11,9 @@ import sys
 
 
 if __name__ == '__main__':
-    url = f'https://api.github.com/repos/{sys.argv[1]}/{sys.argv[2]}/commits'
-    header = {"Accept": "application/vnd.github+json"}
-    response = requests.get(url, headers=header)
+    url = "https://api.github.com/repos/{}/{}/commits".format(
+        sys.argv[2], sys.argv[1])
+    response = requests.get(url)
     res = response.json()
 
     try:
